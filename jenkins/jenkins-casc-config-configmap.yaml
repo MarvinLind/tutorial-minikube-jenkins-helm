@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  jenkins-casc-config.yaml: "jenkins:\n  systemMessage: |\n    This is Verifa's Tutorial
+    Jenkins Instance... Welcome!\n  numExecutors: 0\n  scmCheckoutRetryCount: 2\n
+    \ mode: NORMAL\n\n  securityRealm:\n    local:\n      allowsSignup: false\n      users:\n
+    \       - id: \"admin\"\n          password: \"admin\"\n  authorizationStrategy:
+    loggedInUsersCanDoAnything\n\n  slaveAgentPort: 50000\n  agentProtocols:\n  -
+    \"JNLP4-connect\"\n  - \"Ping\"\n\n  nodes:\n  - permanent:\n      labelString:
+    \"docker\"\n      launcher:\n        jnlp:\n          workDirSettings:\n            disabled:
+    false\n            failIfWorkDirIsMissing: false\n            internalDir: \"remoting\"\n
+    \     mode: EXCLUSIVE\n      name: \"docker-agent\"\n      numExecutors: 1\n      remoteFS:
+    \"/home/jenkins/agent\"\n\ncredentials:\n  system:\n    domainCredentials:\n      -
+    domain:\n        credentials:\n          - usernamePassword:\n              scope:
+    SYSTEM\n              id: admin\n              username: admin\n              password:
+    admin\n              "
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: jenkins-casc-config
